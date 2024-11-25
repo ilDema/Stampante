@@ -4,10 +4,9 @@ import stampante.forme.Forma;
 import stampante.colore.Colore;
 import java.util.ArrayList;
 
-public class ImgVect {
+public class ImgVect implements Stampabile{
 	//contatore dell'ultima forma aggiunta
 	private int formeMaxPerImm;
-//	private Forma[] forme;
 	//arrayList di forme
 	private ArrayList<Forma> forme;
 	
@@ -50,11 +49,54 @@ public class ImgVect {
 		return areaColore;
 	}
 	
+	
+	@Override
 	public void stampaComponenti() {
 		System.out.println("Immagine Vettoriale:");
 		for(int i=0; i<forme.size(); i++) {
 			System.out.println(forme.get(i).toString());
 		}
+	}
+	
+	//i 3 metodi successivi tengono traccia dell'inchiostro residuo in base al colore
+	@Override
+	public double getInchiostroR() {
+		double inkR = 0;
+		for(int i=0; i<forme.size(); i++) {
+			inkR+=forme.get(i).getColRedInBaseAdArea();
+		}
+		return inkR;
+	}
+
+	@Override
+	public double getInchiostroG() {
+		double inkG = 0;
+		for(int i=0; i<forme.size(); i++) {
+			inkG+=forme.get(i).getColGreenInBaseAdArea();
+		}
+		return inkG;
+	}
+
+	@Override
+	public double getInchiostroB() {
+		double inkB = 0;
+		for(int i=0; i<forme.size(); i++) {
+			inkB+=forme.get(i).getColBlueInBaseAdArea();
+		}
+		return inkB;
+	}
+
+	//tiene traccia del livello di tutte le cartucce ma in un solo comando
+	@Override
+	public double[] getAllInk() {
+		//double[] inkRGB = {0, 0, 0};
+		double[] inkTot = {0, 0, 0};
+		for(int i=0; i<forme.size(); i++) {
+			inkTot[0]+=forme.get(i).getColRedInBaseAdArea();
+			inkTot[0]+=forme.get(i).getColRedInBaseAdArea();
+			inkTot[0]+=forme.get(i).getColRedInBaseAdArea();
+		}
+		return inkTot;
 	}
 	
 	

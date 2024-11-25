@@ -36,7 +36,7 @@ public class Colore {
 	public String toString() {
 		return  "Rosso: " + this.red   +", "+
 				"Green: " + this.green +", "+
-				"Blue:" + this.blue    +"; ";
+				"Blue:" +   this.blue  +"; ";
 	}
 
 	

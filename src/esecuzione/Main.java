@@ -1,3 +1,4 @@
+package esecuzione;
 import stampante.colore.*;
 import stampante.forme.*;
 import stampante.immagini.*;
@@ -5,6 +6,7 @@ import stampante.immagini.*;
 public class Main {
 	public static void main(String[] args) {
 		/*
+		 * Versione 1
 		ImgVect imm = new ImgVect(3);
 		
 		Forma f1 = new Rettangolo()
@@ -24,6 +26,9 @@ public class Main {
 		
 		imm.stampaComponenti();
 		*/
+		
+		/*
+		 * Versione 2
 		ImgVect imm = new ImgVect(3);
 		Colore coloreRed   = new Colore(255,   0,   0);
 		Colore coloreGreen = new Colore(0  , 255,   0);
@@ -41,7 +46,11 @@ public class Main {
 		imm.calcolaAreaInBaseAColore(coloreRed);
 		
 		imm.stampaComponenti();
-
+		*/
+		
+		
+		
+		
 		
 	}
 

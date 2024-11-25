@@ -19,14 +19,14 @@ public abstract class Forma {
 	
 	
 	//METODI
-	//in base all'area consuma più o meno colore
-	public double getColRed() {
+	//in base all'area della forma consuma più o meno colore
+	public double getColRedInBaseAdArea() {
 		return colore.getRed()/255*calcolaArea();
 	}
-	public double getColGreen() {
+	public double getColGreenInBaseAdArea() {
 		return colore.getGreen()/255*calcolaArea();
 	}
-	public double getColBlue() {
+	public double getColBlueInBaseAdArea() {
 		return colore.getBlue()/255*calcolaArea();
 	}
 	
