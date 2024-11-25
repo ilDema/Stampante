@@ -17,10 +17,10 @@ public class Stampante {
 	 * @param cartG
 	 * @param cartB
 	 */
-	public Stampante(CartucciaR cartR, CartucciaG cartG, CartucciaB cartB) {
-		this.cartR = cartR;
-		this.cartG = cartG;
-		this.cartB = cartB;
+	public Stampante() {
+		this.cartR = new CartucciaR();
+		this.cartG = new CartucciaG();
+		this.cartB = new CartucciaB();
 	}
 
 	
@@ -65,6 +65,7 @@ public class Stampante {
 		cartR.sostituisci();
 		cartG.sostituisci();
 		cartB.sostituisci();
+		System.out.println("Ricarica effettuata");
 	}
 	
 	//livello cartuccie

@@ -5,18 +5,29 @@ import stampante.colore.Colore;
 
 public class ImgRaster implements Stampabile {
 	//creo una matrice di colori (e no di forme pk il raster è così)
-	private ArrayList<ArrayList<Colore>> matricePixel = new ArrayList<ArrayList<Colore>>();
-	private Colore colore;
+	//private ArrayList<ArrayList<Colore>> matricePixel = new ArrayList<ArrayList<Colore>>();
+	private Colore[][] matricePixel;
+	//private Colore colore;
 
+	/**
+	 * vecchio COSTRUTTORE
+	 * @param matricePixel
+	 
+	public ImgRaster(ArrayList<ArrayList<Colore>> matricePixel) {
+		this.matricePixel = matricePixel;
+	}
+	*/
 	
 	
 	/**
 	 * COSTRUTTORE
 	 * @param matricePixel
 	 */
-	public ImgRaster(ArrayList<ArrayList<Colore>> matricePixel) {
-		super();
-		this.matricePixel = matricePixel;
+	public ImgRaster(int righe, int colonne) {
+		this.matricePixel = new Colore[righe][colonne];
+		
+		//SOLO PER TESTING
+		randPixel();
 	}
 
 	//METODI
@@ -38,13 +49,26 @@ public class ImgRaster implements Stampabile {
 						   "B: "+ b);
 	}
 
+	
+	/*
+	 * vecchio ciclo per la matrice di array list
+	for(int i=0; i<matricePixel.size(); i++) {
+		for(int j=0; j<matricePixel.get(i).size(); j++) {
+			inkR += (double) colore.getRed() / 255;
+		}
+	}
+	*/
+	
+	
 	//i 3 metodi successivi tengono traccia dell'inchiostro residuo in base al colore
 	@Override
 	public double getInchiostroR() {
 		double inkR = 0;
 		
-		for(int i=0; i<matricePixel.size(); i++) {
-			for(int j=0; j<matricePixel.get(i).size(); j++) {
+		for(int i=0; i<matricePixel.length; i++) {
+			Colore[] matrix = matricePixel[i];
+			for(int j=0; j<matrix.length; j++) {
+				Colore colore = matrix[j];
 				inkR += (double) colore.getRed() / 255;
 			}
 		}
@@ -55,8 +79,10 @@ public class ImgRaster implements Stampabile {
 	public double getInchiostroG() {
 		double inkG = 0;
 		
-		for(int i=0; i<matricePixel.size(); i++) {
-			for(int j=0; j<matricePixel.get(i).size(); j++) {
+		for(int i=0; i<matricePixel.length; i++) {
+			Colore[] matrix = matricePixel[i];
+			for(int j=0; j<matrix.length; j++) {
+				Colore colore = matrix[j];
 				inkG += (double) colore.getGreen() / 255;
 			}
 		}
@@ -67,8 +93,10 @@ public class ImgRaster implements Stampabile {
 	public double getInchiostroB() {
 		double inkB = 0;
 		
-		for(int i=0; i<matricePixel.size(); i++) {
-			for(int j=0; j<matricePixel.get(i).size(); j++) {
+		for(int i=0; i<matricePixel.length; i++) {
+			Colore[] matrix = matricePixel[i];
+			for(int j=0; j<matrix.length; j++) {
+				Colore colore = matrix[j];
 				inkB += (double) colore.getBlue() / 255;
 			}
 		}
@@ -96,7 +124,19 @@ public class ImgRaster implements Stampabile {
 	
 	
 	//SOLO PER TESTING
-	private void randPix(){
+	public void randPixel(){
+		for(int riga=0; riga<matricePixel.length; riga++) {
+			for(int colonna=0; colonna<matricePixel[riga].length; colonna++) {
+				//matricePixel.add((int) (255*Math.random()), (int) (255*Math.random()), (int) (255*Math.random()));
+				Colore colore = new Colore((int) (255*Math.random()), (int) (255*Math.random()), (int) (255*Math.random()));
+				matricePixel[riga][colonna] = colore;
+            }
+        }
+    }
+	
+	/*
+	 * vecchio metodo per randomizzare
+	public void randPixel(){
 		for(int i=0; i<matricePixel.size(); i++) {
 			for(int j=0; j<matricePixel.get(i).size(); j++) {
 				//matricePixel.add((int) (255*Math.random()), (int) (255*Math.random()), (int) (255*Math.random()));
@@ -105,5 +145,6 @@ public class ImgRaster implements Stampabile {
             }
         }
     }
+    */
 
 }
